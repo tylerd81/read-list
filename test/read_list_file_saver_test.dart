@@ -10,6 +10,8 @@ void main() async {
 
   rl.createCategory("Sci Fi");
   rl.addBook("Sci Fi", book);
+  rl.updateBookProgress("Sci Fi", book, ReadTime(DateTime.now(), 100, 100));
+  rl.updateBookProgress("Sci Fi", book, ReadTime(DateTime.now(), 200, 200));
 
   test("save() should return true", () async {
     bool status = await saver.save(rl);
