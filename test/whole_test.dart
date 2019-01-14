@@ -21,6 +21,17 @@ void main() {
   rl.addBook(
       "Technology", Book(title: "Head First Design Patterns", numPages: 341));
 
+  // do some reading on a couple books
+  rl.updateBookProgress(
+      "Sci Fi", Book(title: "Second Ship"), ReadTime(DateTime.now(), 600, 20));
+
+  rl.updateBookProgress("Sci Fi", Book(title: "Quarter Share"),
+      ReadTime(DateTime.now(), 600, 20));
+  rl.updateBookProgress("Sci Fi", Book(title: "Quarter Share"),
+      ReadTime(DateTime.now(), 600, 20));
+  rl.updateBookProgress("Sci Fi", Book(title: "Quarter Share"),
+      ReadTime(DateTime.now(), 600, 20));
+
   test("All the books categories are created", () {
     var cat = rl.getCategories();
 
@@ -38,5 +49,15 @@ void main() {
     expect(scifi.length, equals(2));
     expect(fantasy.length, equals(3));
     expect(tech.length, equals(1));
+  });
+
+  test("Some progress has been made on the book...", () {
+    var bp = rl.getBookProgress("Sci Fi", Book(title: "Second Ship"));
+    expect(bp.totalPagesRead, equals(20));
+  });
+
+  test("A lot of progress has been made on Quarter Share", () {
+    var bp = rl.getBookProgress("Sci Fi", Book(title: "Quarter Share"));
+    expect(bp.totalPagesRead, equals(60));
   });
 }
