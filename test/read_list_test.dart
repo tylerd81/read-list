@@ -81,6 +81,20 @@ void main() {
     expect(bp, equals(null));
   });
 
+  test("Get all BookProgress objects at once", () {
+    ReadList rl = new ReadList();
+    Book book = new Book(title: "Quarter Share");
+    rl.createCategory("Sci Fi");
+    rl.addBook("Sci Fi", book);
+    rl.addBook("Fantasy", Book(title: "Lord of the rings"));
+    ReadTime rt = new ReadTime(new DateTime.now(), 100, 100);
+    rl.updateBookProgress("Fantasy", Book(title: "Lord of the rings"), rt);
+    rl.updateBookProgress("Sci Fi", book, rt);
+
+    // expect(rl.getBookProgress("Sci Fi", book).totalTimeRead, equals(500));
+    expect(rl.allBookProgress().length, equals(2));
+  });
+
   test("Getting a list from an empty category should be an empty list", () {
     ReadList rl = new ReadList();
     var bl = rl.getBooksInCategory("Sci Fi");

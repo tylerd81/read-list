@@ -1,6 +1,7 @@
 import "src/book_progress.dart";
 import "src/book.dart";
 import "src/read_time.dart";
+import "read_list_saver.dart";
 
 export "src/book.dart";
 export "src/read_time.dart";
@@ -10,7 +11,6 @@ class ReadList {
   // _readingList is indexed by the category names - each category has a
   // List of BookProgress objects, one for each book in the category.
   // (each BookProgress has a Book object)
-
   Map<String, List<BookProgress>> _readingList = {};
 
   void createCategory(String categoryName) {
@@ -66,6 +66,19 @@ class ReadList {
 
     cat.add(new BookProgress(book));
     return true;
+  }
+
+  List<BookProgress> allBookProgress() {
+    List<BookProgress> bpList = [];
+
+    // return List<BookProgress>.from(_readingList.values);
+    for (List<BookProgress> bpl in _readingList.values) {
+      for (BookProgress bp in bpl) {
+        bpList.add(bp);
+      }
+    }
+    return bpList;
+    // return List.from(_readingList.values.toList());
   }
 
   BookProgress updateBookProgress(
