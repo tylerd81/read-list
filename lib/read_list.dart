@@ -1,6 +1,10 @@
-import "package:reading_list/book_progress.dart";
-import "package:reading_list/book.dart";
-import "package:reading_list/read_time.dart";
+import "src/book_progress.dart";
+import "src/book.dart";
+import "src/read_time.dart";
+
+export "src/book.dart";
+export "src/read_time.dart";
+export "src/book_progress.dart";
 
 class ReadList {
   // _readingList is indexed by the category names - each category has a
@@ -54,11 +58,11 @@ class ReadList {
     List<BookProgress> cat = _readingList[categoryName];
     if (cat == null && insert == false) {
       return false; // category doesn't exist and insert == false
-    } else {
+    } else if (cat == null && insert == true) {
       // category doesn't exist yet - create it
       createCategory(categoryName);
-      cat = _readingList[categoryName];
     }
+    cat = _readingList[categoryName];
 
     cat.add(new BookProgress(book));
     return true;

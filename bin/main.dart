@@ -1,5 +1,4 @@
-import "package:reading_list/book.dart";
-import "package:reading_list/book_progress.dart";
+import "package:reading_list/read_list.dart";
 
 void main() {
   Book book = new Book(title: "Quarter Share");

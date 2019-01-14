@@ -1,5 +1,5 @@
 import "package:test/test.dart";
-import "package:reading_list/book.dart";
+import "package:reading_list/read_list.dart";
 
 void main() {
   test("Book title should be 'Quarter Share' and numPages should be 0", () {

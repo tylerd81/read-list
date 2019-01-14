@@ -1,7 +1,4 @@
 import "package:test/test.dart";
-import "package:reading_list/book.dart";
-import "package:reading_list/book_progress.dart";
-import "package:reading_list/read_time.dart";
 import "package:reading_list/read_list.dart";
 
 void main() {
@@ -35,6 +32,16 @@ void main() {
     rl.addBook("Sci Fi", new Book(title: "Quarter Share"));
     List<Book> books = rl.getBooksInCategory("Sci Fi");
     expect(books.length, equals(1));
+  });
+
+  test("Add two books and get them from the list", () {
+    ReadList rl = new ReadList();
+    rl.createCategory("Sci Fi");
+    rl.addBook("Sci Fi", new Book(title: "Quarter Share"));
+    rl.addBook("Sci Fi", new Book(title: "Full Share"));
+
+    List<Book> books = rl.getBooksInCategory("Sci Fi");
+    expect(books.length, equals(2));
   });
 
   test("Update the read time on a book", () {

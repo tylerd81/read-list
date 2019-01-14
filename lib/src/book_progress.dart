@@ -1,5 +1,4 @@
-import "package:reading_list/book.dart";
-import "package:reading_list/read_time.dart";
+import "package:reading_list/read_list.dart";
 
 class BookProgress {
   // readTimeList is the list of all the times we have read this book

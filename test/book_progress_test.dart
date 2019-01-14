@@ -1,7 +1,4 @@
 import "package:test/test.dart";
-import "package:reading_list/book.dart";
-import "package:reading_list/book_progress.dart";
-import "package:reading_list/read_time.dart";
 import "package:reading_list/read_list.dart";
 
 void main() {
