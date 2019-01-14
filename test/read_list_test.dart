@@ -36,4 +36,57 @@ void main() {
     List<Book> books = rl.getBooksInCategory("Sci Fi");
     expect(books.length, equals(1));
   });
+
+  test("Update the read time on a book", () {
+    ReadList rl = new ReadList();
+    Book book = new Book(title: "Quarter Share");
+    rl.createCategory("Sci Fi");
+    rl.addBook("Sci Fi", book);
+    ReadTime rt = new ReadTime(new DateTime.now(), 100, 100);
+
+    BookProgress bp = rl.updateBookProgress("Sci Fi", book, rt);
+    expect(bp.totalTimeRead, equals(100));
+  });
+
+  test("Add a book and then remove it", () {
+    ReadList rl = new ReadList();
+    Book book = new Book(title: "Quarter Share");
+    rl.createCategory("Sci Fi");
+    rl.addBook("Sci Fi", book);
+
+    rl.removeBook("Sci Fi", book);
+    expect(rl.getBooksInCategory("Sci Fi").contains(book), equals(false));
+  });
+
+  test("Add a category and then remove it", () {
+    ReadList rl = new ReadList();
+    rl.createCategory("Sci Fi");
+    expect(rl.getCategories().contains("Sci Fi"), equals(true));
+    rl.removeCategory("Sci Fi");
+    expect(rl.getCategories().contains("Sci Fi"), equals(false));
+  });
+
+  test("Getting a BookProgress from a non existing category should be null",
+      () {
+    ReadList rl = new ReadList();
+    BookProgress bp =
+        rl.getBookProgress("Sci Fi", new Book(title: "Second Ship"));
+    expect(bp, equals(null));
+  });
+
+  test("Getting a list from an empty category should be an empty list", () {
+    ReadList rl = new ReadList();
+    var bl = rl.getBooksInCategory("Sci Fi");
+    expect(bl, equals(null));
+  });
+
+  test("Add a book and get its progress", () {
+    ReadList rl = new ReadList();
+    Book book = new Book(title: "Quarter Share");
+    rl.createCategory("Sci Fi");
+    rl.addBook("Sci Fi", book);
+
+    var progress = rl.getBookProgress("Sci Fi", book);
+    expect(progress.book == book, equals(true));
+  });
 }

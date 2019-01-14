@@ -18,4 +18,18 @@ void main() {
     bp.add(ReadTime(new DateTime.now(), 100, 300));
     expect(bp.percentageComplete, equals(100));
   });
+
+  test("Number of pages read should be 300", () {
+    Book book = new Book(title: "Quarter Share", numPages: 300);
+    BookProgress bp = new BookProgress(book);
+    bp.add(ReadTime(new DateTime.now(), 100, 300));
+    expect(bp.totalPagesRead, equals(300));
+  });
+
+  test("Total Time Read should be 100", () {
+    Book book = new Book(title: "Quarter Share", numPages: 300);
+    BookProgress bp = new BookProgress(book);
+    bp.add(ReadTime(new DateTime.now(), 100, 300));
+    expect(bp.totalTimeRead, equals(100));
+  });
 }

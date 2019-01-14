@@ -7,4 +7,11 @@ void main() {
     expect(book.title, equals("Quarter Share"));
     expect(book.numPages, equals(0));
   });
+
+  test("Two books with the same title should be the same", () {
+    Book b1 = new Book(title: "Quarter Share");
+    Book b2 = new Book(title: "Quarter Share");
+
+    expect(b1 == b2, equals(true));
+  });
 }

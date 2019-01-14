@@ -26,6 +26,26 @@ class BookProgress {
     return ((totalPagesRead / book.numPages) * 100).floor();
   }
 
+  int get totalTimeRead {
+    int sum = 0;
+
+    for (ReadTime rt in readTimeList) {
+      sum += rt.numSeconds;
+    }
+
+    return sum;
+  }
+
+  int get totalPagesRead {
+    int sum = 0;
+
+    for (ReadTime rt in readTimeList) {
+      sum += rt.numPagesRead;
+    }
+
+    return sum;
+  }
+
   void add(ReadTime readTime) {
     readTimeList.add(readTime);
   }
