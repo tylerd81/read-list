@@ -1,0 +1,23 @@
+# Book Title:Author:num pages:ID
+@books
+Second Ship:Author Name:410:1
+Quarter Share:Author Name:320:2
+Lord of the Rings:JRR Tolkien:456:3
+# Category name:ID
+@categories
+fantasy:1
+sci fi:2
+technology:3
+finished:4
+wish list:5
+# book id:category id:date read:num pages read:time read (in seconds)
+@progress
+1:2:01122019:23:600
+1:2:01132019:31:600
+1:2:01142019:56:600
+2:2:01022019:121:600
+2:2:01042019:27:600
+2:2:01052019:43:600
+3:1:01122019:39:600
+
+

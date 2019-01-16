@@ -1,4 +1,5 @@
 class Book {
+  String id;
   String title;
   String Author;
   int numPages;
